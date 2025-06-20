@@ -1,5 +1,5 @@
 // Fetching the header HTML
-const fetchHeader = fetch('/hortimed/header.html')
+const fetchHeader = fetch('/Hortimed/header.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
@@ -7,7 +7,7 @@ const fetchHeader = fetch('/hortimed/header.html')
     .catch(error => console.error('Error loading header:', error));
 
 // Fetching the footer HTML
-const fetchFooter = fetch('/hortimed/footer.html')
+const fetchFooter = fetch('/Hortimed/footer.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('footer-placeholder').innerHTML = data;
