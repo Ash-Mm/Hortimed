@@ -1,0 +1,673 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4361ee;
+    --primary-light-color: #e0e7fa;
+    --text-color: #333;
+    --text-color-light: #333333c2;
+    --bg-color: #f8f9fa;
+    --bg-color-dark: #343a40;
+    --white-color: #fff;
+    --light-gray-accent: #adaeae;
+    --max-content-width: 1200px;
+    --main-topic-content-width: 1200px;
+    --divider-border-color: #a3a3a3;
+    --h2-color: rgb(0, 83, 4);
+    --navbar: rgb(221, 255, 179);
+    --page2-color: rgb(240, 255, 222);
+}
+
+body {
+    background: white;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout */
+.container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Typography */
+p1, p2, p {
+    font-family: sans-serif;
+}
+h1, h2, h3 { line-height: 1.2; font-family: serif; }
+h1 {
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.section-tagline {
+    font-size: 1.7rem;
+    /* Removed line-height: 0; which would hide the text */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.section-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Header & Navigation Styles --- */
+header {
+    background-image: linear-gradient(to right,white,var(--navbar)  );
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.6rem 0;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--main-topic-content-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.logo img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+/* Hide mobile toggle by default - will be shown by JS when needed */
+.mobile-menu-toggle {
+    display: none;
+}
+
+/* Show regular navigation by default (desktop) */
+.main-nav {
+    display: block;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.3s;
+    display: block;
+    line-height: 1.3;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Hide dropdown toggle buttons by default on desktop */
+.dropdown-toggle-btn {
+    display: none;
+}
+
+/* Desktop Dropdown Styles */
+.dropdown > .nav-link::after {
+    display: none; /* Explicitly hide the pseudo-element on desktop */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.7rem); /* Adjusted for a more standard dropdown position */
+    left: -0.5rem; /* This was not in the second code block, so it remains */
+    background-color: var(--page2-color);
+    min-width: 160px; /* Changed from 180px to match the second block */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Changed to match the second block */
+    border-radius: 4px;
+    opacity: 0; /* This was not in the second code block, so it remains */
+    visibility: hidden; /* This was not in the second code block, so it remains */
+    z-index: 1000;
+    padding: 0.5rem 0; /* Changed from 0.75rem to match the second block */
+    display: flex; /* This was not in the second code block, so it remains */
+    flex-direction: column; /* This was not in the second code block, so it remains */
+    list-style-type: none; /* This was not in the second code block, so it remains */
+    justify-content: center; /* This was not in the second code block, so it remains */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* This was not in the second code block, so it remains */
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 0.75rem 1rem; /* Changed from 0.5rem 1.25rem to match the second block */
+    color: var(--text-color); /* Changed from var(--text-color-light) to match the second block */
+    font-size: 0.85rem; /* This was not in the second code block, so it remains */
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 0; /* This was not in the second code block, so it remains */
+    transition: all 0.2s; /* This was not in the second code block, so it remains */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* This was not in the second code block, so it remains */
+    text-align: left; /* This was not in the second code block, so it remains */
+
+    
+}
+
+.dropdown-link:hover {
+    color: var(--primary-color);
+}
+
+.dropdown-menu li:last-child .dropdown-link {
+    border-bottom: none;
+}
+
+/* Hero */
+.hero {
+    height: calc(100vh - 60px);
+    position: relative;
+    margin-top: 60px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+.hero-background-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -50%;
+    z-index: -1;
+}
+.hero-bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    filter: brightness(0.7) blur(2px);
+}
+.hero-bg-image.active { opacity: 1; }
+.hero-content {
+    background: rgba(0,0,0,0.2);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.hero-logo {
+    width: 500px;
+    height: auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.hero-content h1 {
+    color: var(--white-color);
+    margin-bottom: 1rem;
+}
+.prima-logo {
+    height: 80px;
+    width: auto;
+    margin-top: 1rem;
+}
+.hero-buttons-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.hero-button {
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+.hero-button-primary {
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+.hero-button-outline {
+    background: transparent;
+    border: 1px solid var(--white-color);
+    color: var(--white-color);
+}
+.hero-button-primary:hover {
+    background: #3a52cc;
+    border-color: #3a52cc;
+}
+.hero-button-outline:hover {
+    background: white;
+    color: var(--text-color);
+}
+
+/* Partner Logos */
+.partner-logos {
+    padding: 2rem 0;
+    background: var(--page2-color);
+    text-align: center;
+}
+.partner-logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.partner-logo-link img {
+    height: 60px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+.partner-logo-link:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* Content Blocks */
+.content-block-after-hero {
+    padding: 2rem 1rem;
+    background-image: linear-gradient(var(--page2-color), white);
+}
+.content-block-after-hero .container {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.content-block-image {
+    width: 70%;
+    max-width: 600px;
+    height: auto;
+    margin: 5rem 0 2rem;
+}
+.content-block-after-hero .content-block {
+    padding: 1.7rem;
+    margin-top: 2rem;
+    max-width: 700px;
+}
+.content-block-after-hero .content-block h1  { 
+    text-align: left;
+    color: var(--h2-color)
+ }
+.content-block-after-hero .content-block p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+/* Info Block */
+.info-block {
+    padding-top: 10rem;
+    background-image: linear-gradient(white, var(--page2-color));
+    text-align: center;
+}
+.info-block .container {
+    max-width: var(--max-content-width);
+    margin: auto;
+    position: relative;
+
+}
+.info-cover-image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.info-cover-image-content h1 {
+    position: absolute;
+    color: var(--white-color);
+    font-size: 2.5rem;
+    z-index: 1;
+}
+.info-cover-image {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 2rem;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+}
+.info-container {
+    padding: 6rem 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: 10rem;
+}
+.info-content-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 2rem;
+    padding-top: 9rem;
+}
+.info-content h1 { color: rgb(0, 129, 6); }
+.info-content-table {
+    width: 100%;
+    max-width: 800px;
+    text-align: justify;
+}
+th, td { padding: 15px; }
+th {
+    color: rgb(0, 129, 6);
+    font-weight: 700;
+}
+td {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Methodology */
+.methodology-block {
+    padding: 4rem 1rem;
+    background-image: linear-gradient(var(--page2-color), white);
+    text-align: center;
+}
+.methodology-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+.methodology-content h1 {
+    color: rgb(0, 83, 4);
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.methodology-content .section-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+.methodology-compound {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    align-items: stretch;
+}
+.methodology-item {
+    background: #c5c5c5;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 280px;
+    max-width: 220px;
+    text-align: center;
+    gap: 0.5rem;
+}
+.methodology-item h2 {
+    font-size: 1.35rem;
+    color: rgb(0, 83, 4);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.methodology-item p {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+.methodology-image {
+    width: 100%;
+    max-width: 200px;
+    height: 100px;
+    margin-bottom: 1rem;
+    align-self: center;
+    border-radius: 8px;
+}
+
+/* Project Block */
+.project-block {
+    padding: 4rem 1rem;
+    background-image: linear-gradient(white, var(--page2-color));
+    text-align: center;
+}
+.project-block .container h1 { color: rgb(0, 83, 4); }
+.project-block .container .section-description { text-align: justify; }
+.project-objectives {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.objective-item {
+    background: var(--white-color);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    flex: 0 1 calc(33.333% - 1rem);
+    min-width: 280px;
+    color: var(--text-color);
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.5s ease-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.objective-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.objective-item-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-left: 1rem;
+    text-align: left;
+}
+.objective-item-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+.objective-item-content p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Demo Sites */
+.demo-sites {
+    padding: 4rem 1rem;
+    background-image: linear-gradient(var(--page2-color), white);
+    text-align: center;
+}
+.demo-sites h1 {
+    color: rgb(0, 83, 4);
+    margin-bottom: 2rem;
+}
+.demo-sites-img-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.demo-sites-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- Footer Styles --- */
+.footer {
+    color: black;
+    margin-top: auto;
+    width: 100%;
+
+}
+
+.footer-top {
+    padding: 0.5rem 0;
+    gap: 1rem;
+
+}
+
+.footer-top .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    gap: 5rem;
+    
+}
+.logo_placeholder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Horizontally center flex items */
+    margin: 0.5rem 0;
+    gap: 2rem;
+}
+.logo_image1 {
+    max-width: 80px;
+/* max-height: auto; /* This is redundant, height will adjust by default to maintain aspect ratio */
+    margin: 1rem 1rem 2rem 1rem;
+}
+.logo_image2 {
+    max-width: 80px;
+/* max-height: auto; */
+    margin: 0rem 0rem 2.7rem 0rem;
+}
+.logo_image3 {
+    max-width: 80px;
+}
+
+
+.footer-content {
+    flex: 1;
+    min-width: 280px;
+    max-width: 700px;
+    text-align: left;
+}
+.footer-top {
+    background-image: linear-gradient(white, var(--page2-color));
+}
+.footer-content h1 {
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+}
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+}
+.contact p {
+    padding-bottom: 7rem;
+}
+
+.footer-bottom {
+    background-image: linear-gradient(var(--page2-color),var(--navbar));
+    padding: 1.1rem 0;
+    width: 100%;
+}
+.footer-bottom h1{
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+}
+.footer-bottom img {
+    margin: 0 auto;
+    display: block;
+    max-width: 80px;
+}
+
+
+
+.footer-content p, .contact p {
+    font-size: 0.7rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-logos {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.social-logos:hover {
+    transform: scale(1.1);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 0rem;
+    font-size: 0.8rem;
+}
